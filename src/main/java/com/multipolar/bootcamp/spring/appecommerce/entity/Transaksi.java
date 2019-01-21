@@ -39,6 +39,8 @@ public class Transaksi {
     @OneToMany(mappedBy = "transaksi")
     public List<DetailTransaksi> details = new ArrayList<>();
 
+    @Column(name = "total_pembelian")
+    private Double total_pembelian;
 
 
 }
