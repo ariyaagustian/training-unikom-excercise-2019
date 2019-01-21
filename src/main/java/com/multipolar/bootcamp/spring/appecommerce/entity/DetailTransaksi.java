@@ -16,7 +16,10 @@ import javax.persistence.*;
 public class DetailTransaksi {
 
     @Id
-    private Integer id;
+    @GenericGenerator(name = "uuid_gen", strategy = "uuid2")
+    @GeneratedValue(generator = "uuid_gen")
+    @Column(name = "id", nullable = false, unique = true)
+    private String id;
 
     @JsonIgnore
     @ManyToOne

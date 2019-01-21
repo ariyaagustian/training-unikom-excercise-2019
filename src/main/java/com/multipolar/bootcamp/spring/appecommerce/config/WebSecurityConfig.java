@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/swagger-resources/**",
                         "/v2/api-docs",
                         "/oauth/**").permitAll()
-                .anyRequest().authenticated().and().httpBasic();
+                .anyRequest().authenticated();
     }
 
     @Autowired
