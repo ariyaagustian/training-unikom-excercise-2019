@@ -8,7 +8,9 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Data
@@ -37,5 +39,9 @@ public class Produk {
     @Type(type = "timestamp")
     private Date created_date;
 
+
+    @ManyToOne
+    @JoinColumn(name = "id_toko", nullable = false)
+    private Toko toko;
 
 }
