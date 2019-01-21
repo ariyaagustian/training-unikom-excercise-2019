@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @RestController
@@ -39,7 +42,9 @@ public class ProdukApi {
 
 
     @RequestMapping(path = "/", method = RequestMethod.POST)
-    public ResponseEntity<Produk> save(@RequestBody Produk produk) {
+    public ResponseEntity<Produk> save(Principal principal, @RequestBody Produk produk) {
+        produk.setCreated_by(principal.getName());
+        produk.setCreated_date(Timestamp.valueOf(LocalDateTime.now()));
         produk = produkRepository.save(produk);
         return ResponseEntity.ok(produk);
     }
